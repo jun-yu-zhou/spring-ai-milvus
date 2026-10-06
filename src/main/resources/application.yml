@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: spring-ai-milvus
+
+  # 敏感信息（MongoDB连接串/api-key/Milvus地址等）不要写在本文件
+  # 统一放 application-dev.yml（已加入 .gitignore）
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
+
+  ai:
+    openai:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      chat:
+        model: qwen3.6-plus
+        temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-v4
+    vectorstore:
+      milvus:
+        client:
+          port: 19530
+        # 启动时自动创建集合和索引；数据库本身不会自动创建，见 dev 配置
+        initialize-schema: true
+        collectionName: vector_store
+        embeddingDimension: 1024   # 必须和 embedding 模型输出维度一致
+        indexType: HNSW
+        metricType: COSINE
