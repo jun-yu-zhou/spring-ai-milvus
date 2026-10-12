@@ -37,7 +37,7 @@ public class RagConfig {
     }
 
     /**
-     * RAG 检索顾问 Bean：以 {@link Advisor} 类型暴露，由 ChatController 构造器注入，
+     * RAG 检索顾问 Bean：设置为顾问类型，以 {@link Advisor} 类型暴露，由 ChatController 构造器注入，
      * 再通过 chatClient.prompt().advisors(ragAdvisor) 按请求挂载——
      * 这样"哪些接口走 RAG"由控制器自己决定（例如 /multimodal 图片对话就不需要检索）。
      */
