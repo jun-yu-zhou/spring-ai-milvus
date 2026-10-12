@@ -27,7 +27,7 @@ public class ChatController {
     /**
      * chatClient：AiConfig 中已通过 defaultAdvisors 挂上"会话记忆"顾问（所有请求全局生效）；
      * ragAdvisor：RAG 检索顾问（见 RagConfig 的 Bean 定义）。
-     * RAG 在这里按请求挂载而不是放进 defaultAdvisors，
+     * RAG 在这里按请求挂载而不是放进 defaultAdvisors，通过方法进行选择是否需要 RAG
      * 是为了让"哪些接口走 RAG"由控制器自己决定（/multimodal 图片对话就不需要检索）。
      */
     public ChatController(ChatClient chatClient,
